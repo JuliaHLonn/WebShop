@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order confirmation</title>
+</head>
+<body>
+<h2>Thank you for your order! </h2>
+<table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>Sum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="orderline : ${customerorder}">
+        <td th:text="${orderline.product.name}"></td>
+        <td th:text="${orderline.quantity}"></td>
+        <td th:text="${orderline.product.price}"></td>
+        <td th:text="${orderline.getSubTotal()}"></td>
+    </tr>
+    </tbody>
+</table>
+<p>Total price: <span th:text="${totalPrice}"></span></p>
+<p>A confirmation has been sent to your email! </p>
+</body>
+</html>

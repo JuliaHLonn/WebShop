@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Undelivered Orders</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Order-id</th>
+        <th>Time of order</th>
+    </tr>
+    </thead>
+    <tbody>
+<tr th:each="d: ${undeliveredorders}">
+  <td th:text="${d.id}"></td>
+  <td th:text="${d.timeOfOrder}"></td>
+    <td>
+    <form action="/undelivered-orders" method="post">
+    <input type="hidden" name="id" th:value="${d.id}">
+    <input type="submit" value="Mark as delivered" name="delivered">
+</form>
+    </td>
+</tr>
+    </tbody>
+</table>
+<a href="/shopAdmin">Admin alternatives</a>
+</body>
+</html>

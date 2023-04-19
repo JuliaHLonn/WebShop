@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>New product</h3>
+<form th:action="@{/new}" method="post" th:object="${product}">
+    <p th:text="${productmessage}"></p>
+    Category: <select th:field="*{category}">
+    <option th:each="s:${enumvalues}" th:value="${s}" th:text="${s.toString()}"></option>
+</select>
+    Name: <input type="text" th:field="*{name}" />
+    Price: <input type="text" th:field="*{price}" />
+    <input type="submit" value="New product"/>
+</form>
+<a href="/shopAdmin">Admin alternatives</a>
+</body>
+</html>

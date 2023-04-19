@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivered orders</title>
+</head>
+<body>
+<h1>Delivered Orders</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Order-id</th>
+        <th>Time of order</th>
+    </tr>
+    </thead>
+    <tbody>
+<tr th:each="d: ${deliveredorders}">
+  <td th:text="${d.id}"></td>
+  <td th:text="${d.timeOfOrder}"></td>
+</tr>
+    </tbody>
+</table>
+<a href="/shopAdmin">Admin alternatives</a>
+</body>
+</html>

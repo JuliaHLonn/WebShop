@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping cart</title>
+</head>
+<body>
+<h1>Shopping cart</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Sum</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orderline, loopinfo : ${shoppingCart}">
+            <td th:text="${orderline.product.name}"></td>
+            <td th:text="${orderline.quantity}"></td>
+            <td th:text="${orderline.product.price}"></td>
+            <td th:text="${orderline.getSubTotal()}"></td>
+            <td>
+                <form action="/shoppingcart" method="post">
+                <input type="hidden" name="orderlineindex" th:value="${loopinfo.index}">
+                <button type="submit" name="action" value="decrease">-</button>
+                <button type="submit" name="action" value="increase">+</button>
+                <button type="submit" name="action" value="remove">Remove</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+<p>Total price: <span th:text="${totalPrice}"></span></p>
+<form action="/checkout" method="post">
+    <input type="text" value="email" name="email">
+    <input type="submit" value="Send Order">
+</form>
+<a href="/shop">Back to shop</a>
+</body>
+</html>
